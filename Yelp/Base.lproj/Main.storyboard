@@ -110,6 +110,7 @@
                                             <outlet property="ratingImageView" destination="WO9-Z8-MVe" id="ZT8-x9-7p8"/>
                                             <outlet property="restaurantNameLabel" destination="yhu-1i-zrn" id="Lr6-0g-D9e"/>
                                             <outlet property="reviewsCountLabel" destination="ZKt-He-STO" id="QAj-XJ-H6K"/>
+                                            <segue destination="rDC-Hu-2cP" kind="push" id="rbZ-pK-iGv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -132,6 +133,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgb-4b-F1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1349" y="338"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="squ-cp-ogD">
+            <objects>
+                <viewController id="rDC-Hu-2cP" customClass="DetailViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wIu-H5-yaz"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ON-Cz-6pp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fh1-7V-r10">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5h-ha-V2O">
+                                <rect key="frame" x="0.0" y="64" width="320" height="132"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-ie-CIl">
+                                <rect key="frame" x="20" y="204" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="siR-xp-ysE"/>
+                    <connections>
+                        <outlet property="enlargedFoodImageView" destination="d5h-ha-V2O" id="jW0-u9-fEC"/>
+                        <outlet property="restaurantNameLabel" destination="TCc-ie-CIl" id="R46-aj-ZK5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JIy-3P-qED" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1772" y="338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wZo-d7-W8P">
