@@ -17,7 +17,25 @@ class Business: NSObject {
     let ratingImageURL: NSURL?
     let reviewCount: NSNumber?
     
+    let phoneNumber: String?
+    let openOrClosed: Bool?
+    
+    let latitude: NSNumber?
+    let longitude: NSNumber?
+    let displayAddress: String?
+    
+    let street : String?
+    let city: String?
+    let state: String?
+    let zipCode: String?
+    
+    let offset: NSNumber?
+    
     init(dictionary: NSDictionary) {
+        
+        phoneNumber = dictionary["display_phone"] as? String
+        openOrClosed = dictionary["is_closed"] as? Bool
+        
         name = dictionary["name"] as? String
         
         let imageURLString = dictionary["image_url"] as? String
@@ -29,21 +47,55 @@ class Business: NSObject {
         
         let location = dictionary["location"] as? NSDictionary
         var address = ""
+        var displayAddress = ""
+        var street = ""
+        var city = ""
+        var state2 = ""
+        var zipCode2 = ""
+        var latitude : NSNumber?
+        var longitude : NSNumber?
+        
         if location != nil {
             let addressArray = location!["address"] as? NSArray
             if addressArray != nil && addressArray!.count > 0 {
                 address = addressArray![0] as! String
+                street = addressArray![0] as! String
+                displayAddress = addressArray![0] as! String
             }
             
             let neighborhoods = location!["neighborhoods"] as? NSArray
             if neighborhoods != nil && neighborhoods!.count > 0 {
                 if !address.isEmpty {
                     address += ", "
+                    displayAddress += ", "
                 }
                 address += neighborhoods![0] as! String
+                displayAddress += neighborhoods![0] as! String
+                city = neighborhoods![0] as! String
+            }
+            
+            let state = location!["state_code"] as! String
+            displayAddress += ", \(state)"
+            state2 = state
+            
+            let zipCode = location!["postal_code"] as! String
+            displayAddress += " \(zipCode)"
+            zipCode2 = zipCode
+            
+            if let coordinate = location!["coordinate"] as? NSDictionary {
+                latitude = coordinate["latitude"] as? NSNumber
+                longitude = coordinate["longitude"] as? NSNumber
             }
         }
+        
         self.address = address
+        self.displayAddress = displayAddress
+        self.street = street
+        self.city = city
+        self.state = state2
+        self.zipCode = zipCode2
+        self.latitude = latitude
+        self.longitude = longitude
         
         let categoriesArray = dictionary["categories"] as? [[String]]
         if categoriesArray != nil {
@@ -73,6 +125,8 @@ class Business: NSObject {
         }
         
         reviewCount = dictionary["review_count"] as? NSNumber
+        
+        self.offset = 20
     }
     
     class func businesses(array array: [NSDictionary]) -> [Business] {
@@ -88,7 +142,12 @@ class Business: NSObject {
         YelpClient.sharedInstance.searchWithTerm(term, completion: completion)
     }
     
-    class func searchWithTerm(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: ([Business]!, NSError!) -> Void) -> Void {
-        YelpClient.sharedInstance.searchWithTerm(term, sort: sort, categories: categories, deals: deals, completion: completion)
+//    class func searchWithTerm(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: ([Business]!, NSError!) -> Void) -> Void {
+//        YelpClient.sharedInstance.searchWithTerm(term, sort: sort, categories: categories, deals: deals, completion: completion)
+//    }
+    
+    class func searchWithTerm(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, offset: Int?, completion: ([Business]!, NSError!) -> Void) -> Void {
+        //Add offset to call in business type
+        YelpClient.sharedInstance.searchWithTerm(term, sort: sort, categories: categories, deals: deals, offset: offset, completion: completion)
     }
 }

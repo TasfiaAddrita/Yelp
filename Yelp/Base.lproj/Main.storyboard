@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="115" id="LcM-Ws-haA" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="115" id="LcM-Ws-haA" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LcM-Ws-haA" id="HII-lw-kyg">
@@ -149,24 +149,116 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5h-ha-V2O">
                                 <rect key="frame" x="0.0" y="64" width="320" height="132"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-ie-CIl">
-                                <rect key="frame" x="20" y="204" width="129" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BnQ-Il-7MM">
+                                <rect key="frame" x="14" y="204" width="124.5" height="22.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ql-Sp-dLY">
+                                <rect key="frame" x="144" y="207" width="97" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type of Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlA-rg-OI0">
+                                <rect key="frame" x="14" y="234" width="79.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Yrl-Fs-glT">
+                                <rect key="frame" x="0.0" y="344" width="320" height="128"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWU-Tp-t5z">
+                                <rect key="frame" x="0.0" y="344" width="320" height="128"/>
+                                <connections>
+                                    <segue destination="GFS-wU-4u2" kind="push" id="2qy-Ha-x6w"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Open or Closed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdR-qD-201">
+                                <rect key="frame" x="14" y="282" width="95" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGM-nE-TFE">
+                                <rect key="frame" x="14" y="258" width="91" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyp-lL-X02">
+                                <rect key="frame" x="20" y="313" width="277" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rha-4J-A6a">
+                                <rect key="frame" x="0.0" y="471" width="320" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHh-GZ-o3y">
+                                        <rect key="frame" x="8" y="7" width="304" height="30"/>
+                                        <state key="normal" title="Directions">
+                                            <color key="titleColor" red="0.76862745098039209" green="0.070588235294117646" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openMapsApp:" destination="rDC-Hu-2cP" eventType="touchUpInside" id="Lex-8w-uk2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-ie-CIl">
+                                <rect key="frame" x="14" y="116" width="292" height="27"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TCc-ie-CIl" secondAttribute="trailing" constant="14" id="C7R-bC-RLI"/>
+                            <constraint firstItem="TCc-ie-CIl" firstAttribute="top" secondItem="wIu-H5-yaz" secondAttribute="bottom" constant="52" id="mm2-Yj-hBI"/>
+                            <constraint firstItem="TCc-ie-CIl" firstAttribute="leading" secondItem="fh1-7V-r10" secondAttribute="leading" constant="14" id="qb7-rm-HEU"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="siR-xp-ysE"/>
+                    <navigationItem key="navigationItem" id="Ysu-AM-uFw"/>
                     <connections>
+                        <outlet property="addressButton" destination="tHh-GZ-o3y" id="OiA-aZ-ht5"/>
+                        <outlet property="addressLabel" destination="iyp-lL-X02" id="fB3-Fm-wgY"/>
                         <outlet property="enlargedFoodImageView" destination="d5h-ha-V2O" id="jW0-u9-fEC"/>
+                        <outlet property="mapView" destination="Yrl-Fs-glT" id="z4E-Cd-Xws"/>
+                        <outlet property="openOrClosedLabel" destination="HdR-qD-201" id="nmi-gJ-gjU"/>
+                        <outlet property="phoneNumberLabel" destination="uGM-nE-TFE" id="yji-J0-hYY"/>
+                        <outlet property="ratingImageView" destination="BnQ-Il-7MM" id="lEm-ED-kiB"/>
                         <outlet property="restaurantNameLabel" destination="TCc-ie-CIl" id="R46-aj-ZK5"/>
+                        <outlet property="reviewCountLabel" destination="3Ql-Sp-dLY" id="UFk-uh-C04"/>
+                        <outlet property="typeOfFoodLabel" destination="WlA-rg-OI0" id="LMk-2t-Vza"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JIy-3P-qED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1772" y="338"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="gEv-yN-5EW">
+            <objects>
+                <viewController id="GFS-wU-4u2" customClass="MapViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YU4-N1-K5q"/>
+                        <viewControllerLayoutGuide type="bottom" id="dja-1F-MLJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gIR-4V-wlA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lw7-XI-UrM">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="efo-aZ-DvQ"/>
+                    <connections>
+                        <outlet property="mapView" destination="Lw7-XI-UrM" id="PoS-vT-Ge6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JGQ-YC-rdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2182" y="338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wZo-d7-W8P">
@@ -176,6 +268,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dLs-xR-XIo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
