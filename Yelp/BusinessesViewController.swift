@@ -19,17 +19,22 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     var loadingMoreView : InfiniteScrollActivityView?
     var offset : Int? = 20
     
+    var term = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
 
-        Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        //Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        Business.searchWithTerm("\(term)", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             self.filteredData = businesses
+            
             self.tableView.reloadData()
             
             for business in businesses {
@@ -39,7 +44,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         })
         
         let searchBar = UISearchBar()
-        searchBar.keyboardType = UIKeyboardType.Default
+        //searchBar.keyboardType = UIKeyboardType.Default
         searchBar.delegate = self
         searchBar.sizeToFit()
         searchBar.placeholder = "Search"
@@ -98,53 +103,39 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
 
         tableView.reloadData()
     }
-    
-    //Infinite Scrolling
+
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
         if (!isMoreDataLoading) {
-            //Calculate the positions of one screen length before the bottom of the results
             let scrollViewContentHeight = tableView.contentSize.height
             let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
             
-            //When the user has scorlled past the threshold, start requesting
             if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
                 isMoreDataLoading = true
                 
-                //Update position of loadingMoreView, and start loading indicator
                 let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
                 loadingMoreView?.frame = frame
                 loadingMoreView!.startAnimating()
                 
-                //Call function to load more results
                 loadMoreData()
             }
         }
     }
     
-    //load more data
     func loadMoreData() {
-        //Don't have configure session,just call it from the Business View
-        //Added parameters to the class function to include the offset within the tableView
-        Business.searchWithTerm("Thai", sort: .Distance, categories: [], deals: true, offset: self.offset, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        //Business.searchWithTerm("Thai", sort: .Distance, categories: [], deals: true, offset: self.offset, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        Business.searchWithTerm("\(term)", sort: .Distance, categories: [], deals: true, offset: self.offset, completion: { (businesses: [Business]!, error: NSError!) -> Void in
             if (businesses != []) {
-                //This conditional states that if the businesses does not equal to the array,
-                //correct it by appending the other businesses
                 for business in businesses {
                     print("Appending")
                     self.businesses.append(business)
                 }
-                //Update Flag
-                self.isMoreDataLoading = false
-                //Stop Loading Indicator
-                self.loadingMoreView!.stopAnimating()
                 
-                //Reload and extend the offset to introduce the new data
-                //self.filteredData = self.businesses
                 self.tableView.reloadData()
                 self.offset! += 10
             }
             self.isMoreDataLoading = false
+            self.loadingMoreView!.stopAnimating()
         })
     }
 
